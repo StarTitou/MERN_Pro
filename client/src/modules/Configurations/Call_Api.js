@@ -1,20 +1,4 @@
 import React,{Component} from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import ReactDOM from 'react-dom';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import Loading_Item from './Loading_Item';
@@ -32,7 +16,6 @@ import LastPage from '@material-ui/icons/LastPage';
 import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import MaterialTable from 'material-table';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
@@ -56,11 +39,11 @@ const tableIcons = {
   ThirdStateCheck: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <Remove {...props} ref={ref} />),
   ViewColumn: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <ViewColumn {...props} ref={ref} />)
 };
-const datas=[
+/*const datas=[
   { DesignationFr: 'Mehmet', DesignationAr: 'Baran'},
-];
+];*/
 
-const useStyles = makeStyles({
+/*const useStyles = makeStyles({
   card: {
     maxWidth: '100%',
     minHeight:140,
@@ -71,7 +54,7 @@ const useStyles = makeStyles({
   root:{
     padding:10,
   },
-});
+});*/
 
 class Call_Api extends Component {
     constructor(props) {

@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import InteractiveList from './list';
-import MaterialTable from 'material-table';
+//import App from './Table';
+//import MaterialTable from 'material-table';
 import { forwardRef } from 'react';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -19,9 +20,9 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Loading_Item from './Loading_Item';
+//import EditIcon from '@material-ui/icons/Edit';
+//import DeleteIcon from '@material-ui/icons/Delete';
+//import Loading_Item from './Loading_Item';
 import Call_Api from './Call_Api'
 
 const useStyles = makeStyles({
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard(props) {
-  const tableIcons = {
+ /* const tableIcons = {
     Add: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <Check {...props} ref={ref} />),
     Clear: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <Clear {...props} ref={ref} />),
@@ -59,11 +60,11 @@ export default function MediaCard(props) {
   };
   const datas=[
     { name: 'Mehmet', surname: 'Baran'},
-  ];
+  ];*/
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
   const [width, setWidth] = React.useState(9);
-  const pageSize=20;
+  //const pageSize=20;
   return (
 
     <Grid  className={classes.root} spacing={2}>
