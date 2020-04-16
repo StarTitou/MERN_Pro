@@ -40,6 +40,9 @@ const DocumentSchema = new mongoose.Schema({
     date_doc: {
         type: Date
     },
+    date_val: {
+        type: Date
+    },
     date: {
         type: Date,
         default: Date.now

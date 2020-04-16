@@ -1,8 +1,18 @@
 const mongoose= require('mongoose');
 const ServiceSchema = new mongoose.Schema({
-    parent : {
+    code_ser : {
+        type: String,
+        required:true
+    },
+    fils : {
+        type: [String]
+    },
+     owner : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'service'
+        ref: 'user'
+    },
+    parent : {
+        type:String
     },
     description_Fr:{
         type:String,

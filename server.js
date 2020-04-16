@@ -20,6 +20,7 @@ app.use('/api/color',require('./routers/api/color'));
 app.use('/api/etat',require('./routers/api/etat'));
 app.use('/api/marque',require('./routers/api/marque'));
 app.use('/api/document',require('./routers/api/document'));
+app.use('/api/document_entre',require('./routers/api/document_entre'));
 app.use('/api/sns_ref',require('./routers/api/sns_ref'));
 app.use('/api/service',require('./routers/api/service'));
 app.use('/api/sns_serie',require('./routers/api/sns_serie'));

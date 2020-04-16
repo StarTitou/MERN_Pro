@@ -26,6 +26,8 @@ router.post('/',[auth,
 
 const {
     parent,
+    fils,
+    code_ser,
     description_Ar,
     description_Fr,
     num_Ordre
@@ -37,8 +39,11 @@ Fields.owner = req.user.id;
 if(parent)Fields.parent=parent;
 if(description_Ar) Fields.description_Ar = description_Ar;
 if(description_Fr) Fields.description_Fr = description_Fr;
+if(code_ser) Fields.code_ser = code_ser;
 if(num_Ordre) Fields.num_Ordre = num_Ordre;
-
+if(fils){
+    Fields.fils = fils.split(',').map(fils =>fils.trim());
+}
 
 try{
     type = new Service(Fields);
@@ -54,7 +59,7 @@ try{
 
 router.get('/',async (req,res)=>{
     try {
-        const elements = await Service.find().populate('parent',['description_Fr','_id']);
+        const elements = await Service.find();
         res.json(elements);
     } catch (err) {
         console.error(err.message);
@@ -80,13 +85,13 @@ router.get('/:id',auth,async (req,res)=>{
 
         //remove type
         const elements = await Service.aggregate([
-            { $match: { _id:req.params.id  } }, // Only look at Luke Skywalker
+            //{ $match: { _id:req.params.id  } }, // Only look at Luke Skywalker
             {
               $graphLookup: {
-                from: 'service', // Use the customers collection
-                startWith: '$parent', // Start looking at the document's `friends` property
-                connectFromField: 'parent', // A link in the graph is represented by the friends property...
-                connectToField: '_id', // ... pointing to another customer's _id property
+                from: 'Service', // Use the customers collection
+                startWith: '$code_ser', // Start looking at the document's `friends` property
+                connectFromField: 'code_ser', // A link in the graph is represented by the friends property...
+                connectToField: 'parent', // ... pointing to another customer's _id property
                 maxDepth: 1, // Only recurse one level deep
                 as: 'connections' // Store this in the `connections` property
               }
