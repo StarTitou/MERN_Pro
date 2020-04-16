@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import InteractiveList from './list';
 //import App from './Table';
-//import MaterialTable from 'material-table';
+import MaterialTable from 'material-table';
 import { forwardRef } from 'react';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -20,10 +20,8 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
-//import EditIcon from '@material-ui/icons/Edit';
-//import DeleteIcon from '@material-ui/icons/Delete';
-//import Loading_Item from './Loading_Item';
-import Call_Api from './Call_Api'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
   card: {
@@ -38,8 +36,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
- /* const tableIcons = {
+export default function MediaCard() {
+  const tableIcons = {
     Add: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <Check {...props} ref={ref} />),
     Clear: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <Clear {...props} ref={ref} />),
@@ -59,12 +57,33 @@ export default function MediaCard(props) {
     ViewColumn: forwardRef((props, ref:React.Ref<SVGSVGElement>) => <ViewColumn {...props} ref={ref} />)
   };
   const datas=[
-    { name: 'Mehmet', surname: 'Baran'},
-  ];*/
+    { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+    { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+  ];
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
   const [width, setWidth] = React.useState(9);
-  //const pageSize=20;
+  const pageSize=20;
   return (
 
     <Grid  className={classes.root} spacing={2}>
@@ -76,7 +95,53 @@ export default function MediaCard(props) {
 
           <Grid key='1' item xs={width} >
             <Grid  justify="center" spacing={spacing} margin={5}>
-              <Call_Api name={props.name}/>
+            
+            
+
+
+            <MaterialTable
+              
+              icons={tableIcons}
+              title="Liste de la "
+              columns={[
+                { title: 'Name', field: 'name' },
+                { title: 'Surname', field: 'surname' },
+                { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
+                {
+                  title: 'Birth Place',
+                  field: 'birthCity',
+                  lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+                },
+              ]}
+              data={datas}        
+              actions={[
+                {
+                  icon: () => <EditIcon color='primary'/>,
+                  tooltip: 'Edit User',
+                  onClick: (event, rowData) => alert("You saved " + rowData.name)
+                },
+                {
+                  icon:  () => <DeleteIcon color='secondary' />,
+                  tooltip: 'Delete User',
+                  onClick: (event, rowData) => alert("You want to delete " + rowData.name)
+                }
+              ]}
+              options={{
+                exportButton: true,
+                pageSize:20,
+                pageSizeOptions:[5, 10, 20,50],
+                sorting:true
+              }}
+            />
+
+
+
+
+
+
+
+
+
             </Grid>
           </Grid>
         </Grid>

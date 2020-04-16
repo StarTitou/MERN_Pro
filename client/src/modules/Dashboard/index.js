@@ -1,14 +1,15 @@
 import React from 'react';
 import HomeIcon from '@material-ui/icons/Home';
-import InteractiveList from './login';
-
+import MediaCard from './Items';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
 const Dashboard = () => (
-    <Grid container spacing={0}>
-        <Grid item xs={2} md={2} lg={3}>
-            <InteractiveList/>
-        </Grid >
-    </Grid >
+
+      <MediaCard/>
+  
 );
 
 export default {

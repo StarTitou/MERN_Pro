@@ -5,7 +5,7 @@ import MediaCard from './Items';
 const Configurations = () => (
     <div>
       <CenteredTabs/>
-      <MediaCard name='Model'/>
+      <MediaCard />
     </div>
 );
 

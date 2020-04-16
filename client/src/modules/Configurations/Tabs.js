@@ -34,11 +34,9 @@ export default function CenteredTabs() {
         <Tab label="Marques" />
         <Tab label="Categories" />
         <Tab label="Etats" />
-        <Tab label="Couleurs" />
-        <Tab label="Types" />
-        <Tab label="Unite de Mesure" />
-        <Tab label="Mode de Consommation" />
-        <Tab label="Unite de Mesure" />
+        <Tab label="Controls Techniques" />
+        <Tab label="Assurances" />
+        <Tab label="Vidanges" />
       </Tabs>
     </Paper>
   );

@@ -3,18 +3,24 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
 import clsx from 'clsx';
-import { makeStyles, useTheme,fade } from '@material-ui/core/styles';
-import {Menu,IconButton,InputBase,MenuItem,ListItem,ListItemText,ListItemIcon,Divider,List,Typography,Toolbar,AppBar,CssBaseline,Drawer} from '@material-ui/core';
+import { makeStyles, useTheme, fade } from '@material-ui/core/styles';
+import { Menu, IconButton, InputBase, MenuItem, ListItem, ListItemText, ListItemIcon, Divider, List, Typography, Toolbar, AppBar, CssBaseline, Drawer } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import BuildIcon from '@material-ui/icons/Build';
 import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import WorkIcon from '@material-ui/icons/Work';
 import Tooltip from '@material-ui/core/Tooltip';
+import PersonIcon from '@material-ui/icons/Person';
+import HomeIcon from '@material-ui/icons/Home';
+import ReactDOM from 'react-dom';
 import StorageIcon from '@material-ui/icons/Storage';
+import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
 import LanguageIcon from '@material-ui/icons/Language';
-import Fullscreen from "react-full-screen";
 import modules from './modules'; // All the parent knows is that it has modules ...
 const drawerWidth = 240;
 
@@ -80,10 +86,9 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
-
   content: {
     flexGrow: 1,
-    padding: theme.spacing(0),
+    padding: theme.spacing(3),
   },
   search: {
     position: 'relative',
@@ -126,39 +131,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState(null);
-  const [title, setTitle] = useState('Home');
+  const [currentTab, setCurrentTab] = useState('dashboard');
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [full, setFull] = React.useState(false);
-  const [auth, setAuth] = React.useState(false);
+  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorLanguage, setanchorLanguage] = React.useState(null);
   const [anchorLogin, setanchorLogin] = React.useState(null);
-  const [titleBar,settitleBar]=React.useState('');
-  const [openMenuLanguage, setopenMenuLanguage] = React.useState(false);
-  const [openMenuLogin, setopenMenuLogin] = React.useState(false);
-  function goFull(event) {
-     setFull(true);
-   }
-  function handleMenuLogin(event) {
-    setanchorLogin(event.currentTarget);
-    setopenMenuLogin(true);
-  }
+  const [titleBar, settitleBar] = React.useState('');
 
-  function handleCloseLogin() {
-    setanchorLogin(null);
-    setopenMenuLogin(false);
-  }
-  function handleMenuLanguage(event) {
-    setanchorLanguage(event.currentTarget);
-    setopenMenuLanguage(true);
-  }
-  function handleCloseLanguage() {
-    setanchorLanguage(null);
-    setopenMenuLanguage(false);
-  }
   function handleDrawerOpen() {
     setOpen(true);
   }
@@ -167,13 +149,10 @@ export default function App() {
     setOpen(false);
   }
 
+
   return (
-    <Fullscreen
-          enabled={full}
-          onChange={full => setFull(full)}
-        >
-      <Router>
-        <div className={classes.root}>
+
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -197,7 +176,7 @@ export default function App() {
             Gestion Parc Automobile
           </Typography>
           <Typography className={classes.title} variant="h6" wrap>
-              {currentTab}
+            {titleBar}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -218,15 +197,12 @@ export default function App() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenuLogin}
                 color="inherit"
               >
                 <AccountCircle />
               </IconButton>
               <Menu
                 id="menu-appbar"
-
-                anchorEl={anchorLogin}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
@@ -236,102 +212,102 @@ export default function App() {
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                open={openMenuLogin}
-                onClose={handleCloseLogin}
               >
-                <MenuItem onClick={handleCloseLogin}>Profile</MenuItem>
-                <MenuItem onClick={handleCloseLogin}>Mon Compte</MenuItem>
-                <MenuItem onClick={handleCloseLogin}>Se Deconnecter</MenuItem>
-                <MenuItem onClick={handleCloseLogin}>Verrouiller</MenuItem>
+                <MenuItem >Profile</MenuItem>
+                <MenuItem >Mon Compte</MenuItem>
+                <MenuItem >Se Deconnecter</MenuItem>
+                <MenuItem >Verrouiller</MenuItem>
               </Menu>
             </div>
           )}
           <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menus-appbar"
-                aria-haspopup="true"
-                color="inherit"
-                onClick={goFull}
-              >
-                <StorageIcon />
-              </IconButton>
-            </div>
-            <div>
             <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-language"
-                aria-haspopup="true"
-                onClick={handleMenuLanguage}
-                color="inherit"
-              >
-                <LanguageIcon />
-              </IconButton>
-              <Menu
-                id="menu-language"
-                anchorEl={anchorLanguage}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={openMenuLanguage}
-                onClose={handleCloseLanguage}
-              >
-                <MenuItem onClick={handleCloseLanguage}>Français</MenuItem>
-                <MenuItem onClick={handleCloseLanguage}>Anglais</MenuItem>
-                <MenuItem onClick={handleCloseLanguage}>العربيــة</MenuItem>
-              </Menu>
-            </div>
+              aria-label="account of current user"
+              aria-controls="menus-appbar"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <StorageIcon />
+            </IconButton>
+          </div>
+          <div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-language"
+              aria-haspopup="true"
+
+              color="inherit"
+            >
+              <LanguageIcon />
+            </IconButton>
+            <Menu
+              id="menu-language"
+              anchorEl={anchorLanguage}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              <MenuItem >Français</MenuItem>
+              <MenuItem >Anglais</MenuItem>
+              <MenuItem >العربيــة</MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+      <Router>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbar}>
-        <Typography className={classes.title} variant="h3" noWrap align="center">
-        <LocalShippingOutlinedIcon fontSize='large'/>
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-              {modules.map(module => ( // with a name, and routes
-                <Tooltip title={module.name} placement="right">
-                  <ListItem button key={module.name} component={Link} to={module.routeProps.path} onClick={() => setCurrentTab(module.name)} >
-                    <ListItemIcon >{module.icon} </ListItemIcon>
-                    <ListItemText primary={module.name}  />
-                  </ListItem>
-                </Tooltip>
-              ))}
-        </List>
-        <Divider />
-      </Drawer>
-      <main className={classes.content}>
-      <div className={classes.toolbar} />
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbar}>
+            <Typography className={classes.title} variant="h3" noWrap align="center">
+              <LocalShippingOutlinedIcon fontSize='large' />
+            </Typography>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            {modules.map(module => ( // with a name, and routes
+              <Tooltip title={module.name} placement="right">
+                <ListItem button key={module.name} to={module.routeProps.path} onClick={() => setCurrentTab(module.name)} className={currentTab === module.name ? 'active' : ''}>
+                  <ListItemIcon> {module.icon} </ListItemIcon>
+                  <ListItemText primary={module.name} />
+                </ListItem>
+              </Tooltip>
+            ))}
+          </List>
+          <Divider />
+        </Drawer>
+
+
+
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <div id='corps'>
             {modules.map(module => (
               <Route {...module.routeProps} key={module.name} />
             ))}
-      </main>
-      </div>
+          </div>
+        </main>
+    </div>
       </Router>
-      </Fullscreen>
   );
 }

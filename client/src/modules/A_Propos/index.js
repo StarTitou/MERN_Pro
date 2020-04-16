@@ -2,9 +2,8 @@ import React from 'react';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 
 const A_Propos = () => (
-  <div>
-    A propos
-  </div>
+    <div>A_Propos Module
+    </div>
 );
 
 export default {

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   speedDial: {
     position: 'fixed',
     '&$directionUp, &$directionLeft': {
-      bottom: theme.spacing(5),
+      bottom: theme.spacing(2),
       right: theme.spacing(3),
     },
   },
@@ -35,12 +35,18 @@ const useStyles = makeStyles(theme => ({
   directionLeft: {},
 }));
 
+const actions = [
+  { icon: <ReplyAllSharpIcon />, name: 'Exporter' },
+  { icon: <PrintIcon />, name: 'Imprimer' },
+  { icon: <RefreshIcon />, name: 'Actualiser' },
+  { icon: <FullscreenSharpIcon />, name: 'Plein Ecran' },
+];
 
 export default function SpeedDials() {
   const classes = useStyles();
-  const [direction] = React.useState('up');
+  const [direction, setDirection] = React.useState('up');
   const [open, setOpen] = React.useState(false);
-  const [hidden] = React.useState(false);
+  const [hidden, setHidden] = React.useState(false);
 
   const handleClick = () => {
     setOpen(prevOpen => !prevOpen);
@@ -65,6 +71,9 @@ export default function SpeedDials() {
     setOpen(false);
   };
   const handleExport= () => {
+    setOpen(false);
+  };
+  const handleRefresh= () => {
     setOpen(false);
   };
 
