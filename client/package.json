@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "parkingmanagementsystem",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
     "material-icons": "^0.3.1",
     "material-table": "^1.54.2",
     "mui-datatables": "^2.13.3",
@@ -21,15 +22,7 @@
     "react-script": "^2.0.5",
     "react-scripts": "3.3.0",
     "tubular-react": "^3.0.10",
-    "axios": "^0.19.2",
-    "moment": "^2.24.0",
-    "react-moment": "^0.9.7",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "universal-cookie": "^4.0.3",
-    "uuid": "^7.0.3"
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

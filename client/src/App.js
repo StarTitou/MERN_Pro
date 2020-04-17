@@ -127,16 +127,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState(null);
-  const [title, setTitle] = useState('Home');
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [full, setFull] = React.useState(false);
-  const [auth, setAuth] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [auth] = React.useState(true);
   const [anchorLanguage, setanchorLanguage] = React.useState(null);
   const [anchorLogin, setanchorLogin] = React.useState(null);
-  const [titleBar,settitleBar]=React.useState('');
   const [openMenuLanguage, setopenMenuLanguage] = React.useState(false);
   const [openMenuLogin, setopenMenuLogin] = React.useState(false);
   function goFull(event) {
@@ -194,9 +191,9 @@ export default function App() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Gestion Parc Automobile
+            Project Title
           </Typography>
-          <Typography className={classes.title} variant="h6" wrap>
+          <Typography className={classes.title} variant="h6" wrap='true'>
               {currentTab}
           </Typography>
           <div className={classes.search}>
@@ -314,9 +311,9 @@ export default function App() {
         <Divider />
         <List>
               {modules.map(module => ( // with a name, and routes
-                <Tooltip title={module.name} placement="right">
+                <Tooltip title={module.name} key={module.name} placement="right">
                   <ListItem button key={module.name} component={Link} to={module.routeProps.path} onClick={() => setCurrentTab(module.name)} >
-                    <ListItemIcon >{module.icon} </ListItemIcon>
+                    <ListItemIcon >{module.icon}</ListItemIcon>
                     <ListItemText primary={module.name}  />
                   </ListItem>
                 </Tooltip>
