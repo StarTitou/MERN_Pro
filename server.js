@@ -20,6 +20,8 @@ app.use('/api/color',require('./routers/api/color'));
 app.use('/api/etat',require('./routers/api/etat'));
 app.use('/api/marque',require('./routers/api/marque'));
 app.use('/api/document',require('./routers/api/document'));
+app.use('/api/article_entre_magasin',require('./routers/api/article_entre_magasin'));
+app.use('/api/operation_article',require('./routers/api/operation_article'));
 app.use('/api/document_entre',require('./routers/api/document_entre'));
 app.use('/api/sns_ref',require('./routers/api/sns_ref'));
 app.use('/api/service',require('./routers/api/service'));
