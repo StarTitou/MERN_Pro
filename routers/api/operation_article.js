@@ -43,7 +43,6 @@ const {
     article,
     document,
     article_entre,
-    qte_demande,
     qte_distribue,
     observation,
     qte_consomme,
@@ -54,7 +53,6 @@ const {
 const Fields = {};
 Fields.owner = req.user.id;
 if(article) Fields.article = article;
-if(document) Fields.document = document;
 if(article_entre) Fields.article_entre = article_entre;
 if(qte_demande) Fields.qte_demande = qte_demande;
 if(qte_distribue) Fields.qte_distribue = qte_distribue;

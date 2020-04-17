@@ -4,6 +4,10 @@ const DocumentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
+    liste_article:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'article'
+    },
     code_service_dist:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'service'
@@ -42,6 +46,10 @@ const DocumentSchema = new mongoose.Schema({
     },
     date_val: {
         type: Date
+    },
+    liste_article_supp:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'article'
     },
     date: {
         type: Date,

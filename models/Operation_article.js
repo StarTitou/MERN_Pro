@@ -8,10 +8,6 @@ const Operation_ArticleSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'article'
     },
-    document: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'document'
-    },
     article_entre : {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'article_entre_magasin'

@@ -41,9 +41,7 @@ router.post('/',[auth,
     }
 const {
     article,
-    document,
     article_entre,
-    operation_article,
     qte_supp
 }= req.body;
 
@@ -51,9 +49,7 @@ const {
 const Fields = {};
 Fields.owner = req.user.id;
 if(article) Fields.article = article;
-if(document) Fields.document = document;
 if(article_entre) Fields.article_entre = article_entre;
-if(operation_article) Fields.operation_article = operation_article;
 if(qte_supp) Fields.qte_supp = qte_supp;
 
 try{

@@ -8,19 +8,10 @@ const Operation_Article_SuppSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'article'
     },
-    document: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'document'
-    },
     article_entre : {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'article_entre_magasin'
     },
-    operation_article : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'operation_article'
-    },
-    
     qte_supp:{
         type: Number
     },
